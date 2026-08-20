@@ -1,0 +1,28 @@
+name: 'WMATA Bus'
+no_screen_padding: 'no'
+dark_mode: 'no'
+strategy: polling
+polling_verb: get
+polling_url: |-
+  {% assign stops = stop_ids | split: "," %}{% for stop in stops %}https://api.wmata.com/NextBusService.svc/json/jPredictions?StopID={{ stop | strip }}
+  {% endfor %}
+polling_headers: |
+  api_key= {{ api_key }}
+refresh_interval: 15
+id: null
+custom_fields:
+  -
+    keyname: api_key
+    field_type: string
+    name: 'WMATA API Key'
+  -
+    keyname: stop_ids
+    field_type: string
+    name: 'Stop IDs'
+    description: 'Comma-separated WMATA bus StopIDs, e.g. 2001227,2001249,2002634. Find via https://api.wmata.com/Bus.svc/json/jStops or the WMATA trip planner. Works with any number of stops, including just one.'
+  -
+    keyname: title_text
+    field_type: string
+    name: 'Title text'
+    description: 'Text shown in the title bar.'
+    default: 'WMATA Bus'
