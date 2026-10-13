@@ -49,6 +49,12 @@ invalidated the previously-cached response's shape. It resolves itself on the ne
 refetch (within `refresh_interval`, 15 min by default), but there's no way for the recipe itself
 to force an immediate one from within Liquid.
 
+The title bar (WMATA logo, board title, "Refreshed at" time) sits at the **top** of the
+screen, matching the layout used across the other recipes in the companion
+[trmnl-recipes](https://github.com/AndreMessier/trmnl-recipes) repo — there's no computed
+value in it (just the configured title and the current time), so moving it didn't need any
+special Liquid-ordering handling, unlike a couple of the Plex recipes.
+
 ## Note on WMATA coverage
 
 WMATA's own bus API only covers Metrobus routes. Other buses you might associate with a given

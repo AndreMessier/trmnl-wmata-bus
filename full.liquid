@@ -1,3 +1,8 @@
+<div class="title_bar" style="border-top:none; border-bottom:2px solid #000;">
+  <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/WMATA_Metro_Logo_small.svg" />
+  <span class="title">{{ trmnl.plugin_settings.custom_fields_values.title_text | default: "WMATA Bus" }}</span>
+  <span class="instance">Refreshed at {{ 'now' | date: '%H:%M' }}</span>
+</div>
 <div class="layout layout--col">
   {% assign stops = trmnl.plugin_settings.custom_fields_values.stop_ids | split: "," %}
   {% if stops.size == 1 %}
@@ -40,9 +45,4 @@
       {% endif %}
     </tbody>
   </table>
-</div>
-<div class="title_bar">
-  <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/WMATA_Metro_Logo_small.svg" />
-  <span class="title">{{ trmnl.plugin_settings.custom_fields_values.title_text | default: "WMATA Bus" }}</span>
-  <span class="instance">Refreshed at {{ 'now' | date: '%H:%M' }}</span>
 </div>
